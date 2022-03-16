@@ -1,0 +1,32 @@
+
+<h1>{{title}}</h1>
+<div>
+    <form action="">
+        <input type="text" id="Value" name="Value" placeholder="Enter any item"
+        required [(ngModel)]="newItem.Value">
+    </form>
+    <br>
+    <button type="submit" [disabled]="IsForUpdate == true" (click)="AddItem()">Add</button>
+    <button type="submit" [disabled]="IsForUpdate == false"  (click)="UpdateItem()">Update</button>
+</div>
+
+<div>
+    <div *ngFor="let data of myItems;let i= index">
+        <div>
+            {{data.Value}}
+            <a href="#" (click)="DeleteItem(i)" style="float: right;">
+            <mat-icon aria-hidden="false" aria-label="Example Delete icon">delete</mat-icon>
+            </a>
+            <a href="#" (click)="EditItem(i)" style="float: right;padding-right: 8px;">
+                <mat-icon aria-hidden="false" aria-label="Example Edit icon">edit</mat-icon>
+              </a>
+        </div>
+        
+          
+    </div>
+    <div>
+        <div *ngIf="myItems.length==0">
+            <p>Items are Empty!!</p>
+        </div>
+    </div>
+</div>
